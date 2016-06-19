@@ -1,0 +1,38 @@
+package cn.com.dick.twopointsix;
+import java.util.Scanner;
+
+/**
+ * @author 张钊晋
+ * Ex 2.6
+ * calculate the product of three numbers
+ * 2016年1月22日
+ */
+public class ExTwoPointSix {
+	//main method begins
+	public static void main(String[] args) {
+		//create scanner to obtain input from command window
+		Scanner input = new Scanner(System.in);
+		
+		int x,//first number to add
+			y,//second number to add
+			z,//third number to add
+			result;//product of numbers
+		
+		System.out.print("Enter first integer:");//prompt for input
+		x = input.nextInt();//read first integer
+		
+		System.out.print("Enter second integer:");//prompt for input
+		y = input.nextInt();//read second integer
+		
+		System.out.print("Enter third integer:");//prompt for input
+		z = input.nextInt();//read third integer
+		
+		result = x * y * z;//calculate product of numbers
+		
+		System.out.printf("Product is %d", result);//input answer
+		
+		input.close();//close the scanner
+		
+	}//end method main
+
+}//end class product

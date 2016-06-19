@@ -1,0 +1,48 @@
+//Fig. 5.26:Shapes.java
+//Demonstrates drawing different shapes 
+
+package cn.com.dick.Shapes;
+import java.awt.Graphics;
+import javax.swing.JPanel;
+
+/**
+ * @author 张钊晋
+ * 
+ * 2016年1月26日下午5:19:20
+ */
+public class Shapes extends JPanel {
+	private int choice;//user's choice of which shape to draw
+	
+	//constructor sets the user's choice
+	public Shapes(int userChoice)
+	{
+		choice = userChoice;
+	}//end Shapes constructor
+	
+	//draws a cascade of shapes starting from the top left corner
+	public void paintComponent(Graphics g)
+	{
+		super.paintComponent(g);
+		int width = getWidth();
+		int height = getHeight();
+		for (int i = 0; i < 10; i++) 
+		{
+			//pick the shape based on the user's choice
+			switch (choice) {
+			case 1://draw rectangles
+				g.drawRect(10+i*10, 10+i*10, 50+i*10, 50+i*10);
+				break;
+			case 2://draw ovals
+				g.drawOval(10+i*10, 10+i*10, 50+i*10, 50+i*10);
+				break;
+			case 3://draw ovals with the same center
+				g.drawOval(5+i*5, 5+i*5,
+						width - (5+i*5), height - (5+i*5));
+
+			default:
+				break;
+			}//end switch
+		}//end for
+	}//end method paintComponent
+
+}//end class Shapes

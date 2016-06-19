@@ -1,0 +1,36 @@
+//Fig K. 2:ContinueLabelTest.java
+//Labeled  continue statement terminating a nest for statement
+package cn.com.dick.I;
+
+/**
+ * @author 张钊晋
+ * 
+ * 2016年2月3日下午9:08:50
+ */
+public class ContinueLabelTest {
+	private final static int FIRSTBOUND = 5,
+							 SECONDBOUND = 10;
+
+	public static void main(String[] args) {
+		nextRow://target label of continue statement
+		
+		//count 5 rows
+		for (int row = 1; row <= FIRSTBOUND; row++) 
+		{
+			System.out.println();//outputs a newline
+			
+			//count 10 columns per row
+			for (int column = 0; column <= SECONDBOUND; column++) 
+			{
+				//if column than row, starts next row
+				if (column>row)
+					continue nextRow;//next iteration of labeled loop
+				System.out.print("* ");
+			}//end inner for
+		}//end outer for
+	
+	System.out.println();//outputs a new line
+
+	}//end main
+
+}//end class ContinueLabelTest

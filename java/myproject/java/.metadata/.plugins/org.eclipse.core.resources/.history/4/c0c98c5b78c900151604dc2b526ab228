@@ -1,0 +1,40 @@
+//Exercise 6.1:DrawToroEyes.java
+//Draw toro's eyes
+package cn.com.dick.six.sixteen;
+import java.awt.Color;
+import java.awt.Graphics;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+import java.util.Random;
+
+/**
+ * @author 张钊晋
+ * 
+ * 2016年2月2日下午2:30:33
+ */
+public class DrawToroEyes extends JPanel {
+	public void paintComponent(Graphics g){
+		super.paintComponent(g);
+		
+		//create random number
+		Random randomNumber = new Random();
+		
+		//draw the eyes
+		Color colors = new Color(randomNumber.nextInt(256),
+				randomNumber.nextInt(256), randomNumber.nextInt(256));
+		g.fillOval(55, 65, 30, 30);
+		
+	}
+	public static void main(String args[]){
+		DrawToroEyes panel = new DrawToroEyes();
+		JFrame application = new JFrame();
+		
+		application.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		application.add(panel);
+		application.setSize(230, 250);
+		application.setVisible(true);
+	}
+
+}

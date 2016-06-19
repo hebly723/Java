@@ -1,0 +1,10 @@
+package cn.com.dick.fig.sixpointseven;
+
+public class RandomIntergers {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

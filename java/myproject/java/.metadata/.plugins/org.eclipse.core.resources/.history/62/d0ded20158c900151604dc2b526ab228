@@ -1,0 +1,111 @@
+//exercise6.10: craps.java
+//a craps game
+package cn.com.dick.sixpointten.Craps;
+import java.util.Scanner;
+import java.util.Random;
+/**
+ * @author 张钊晋
+ * craps game exercise
+ * 2016年1月31日下午10:43:23
+ */
+public class Craps {
+	//main method
+	public static void main(String args[])
+	{
+		int point1 = 0,//the first point
+			point2 = 0,//the second point
+			pointSum = 0,//sum of two point
+			counter = 0,//counter of rolling
+			samePoint = 0,
+			flag = 1;//flag to attention to stop input
+		
+		Random randomNumber = new Random();//random number generator
+		
+		while (flag == 1)
+		{
+			counter++;//increment the counter
+			
+			point1 = randomNumber.nextInt(6)+1;//first number
+			point2 = randomNumber.nextInt(6)+1;//second number
+			pointSum = point1 + point2;//sum of two number
+			
+			System.out.printf("Player rolled %d + %d = %d\n", point1, point2,
+					pointSum);
+			
+			//judge the situation when counter equal to 1
+			if (counter==1)
+			{
+				if (pointSum==7||pointSum==11)
+				{
+					flag = 0;//end while
+					
+					System.out.println("Player wins");//display win message
+					
+				}
+				else if (pointSum==2||pointSum==3||pointSum==12)
+				{
+					flag = 0;//end while
+					
+					System.out.println("Player loses");//display lose message
+					
+				}
+				else if (pointSum==4||pointSum==5||pointSum==6||pointSum==8||
+						pointSum==9||pointSum==10)
+				{
+					flag = 1;//continue while
+					
+					//display point
+					System.out.printf("point is %d\n", pointSum);
+					
+					samePoint = pointSum;//memory the point
+					
+				}
+				else
+				{
+					//display error message
+					System.out.printf("Error %d", pointSum);
+					
+					System.exit(0);
+					
+				}
+				
+			}
+			else if (counter>1)
+			{
+				if (pointSum != samePoint&&pointSum != 7)
+				{
+					flag = 1;//continue while
+					
+				}
+				else if (pointSum == 7)
+				{
+					flag = 0;//end while
+					
+					System.out.println("Player loses");//display lose message
+					
+				}
+				else if (pointSum == samePoint)
+				{
+					flag = 0;//end while
+					
+					System.out.println("Player wins");//display win message
+					
+				}
+				
+			}
+			else
+			{
+				//display error message
+				System.out.printf("Error %d counter", counter);
+				
+				System.exit(0);
+			}
+			
+			
+			
+			
+		}
+		
+	}
+
+}

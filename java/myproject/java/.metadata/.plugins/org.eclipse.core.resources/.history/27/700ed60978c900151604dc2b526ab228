@@ -1,0 +1,7 @@
+package cn.com.dick.six.sixteen;
+
+import javax.swing.JPanel;
+
+public class DrawToroEyes extends JPanel {
+
+}

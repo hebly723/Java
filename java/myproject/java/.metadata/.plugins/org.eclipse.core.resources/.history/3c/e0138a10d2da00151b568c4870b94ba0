@@ -1,0 +1,88 @@
+//Fig. 7. 9: Card. java
+//card class represents a playing card
+package cn.com.dick.seven.five;
+
+/**
+ * @author 张钊晋
+ * Card
+ * 2016年2月4日下午9:55:38
+ */
+public class Card {
+	private String face;//face of card("Ace", "Deuce", ...)
+	private String suit;//suit of card("Hearts", "Diamonds")
+	
+	//two-argument constructor initializes card's face and suit
+	public Card(String cardFace, String cardSuit)
+	{
+		face = cardFace;//initialize face of card
+		suit = cardSuit;//initialize suit of card
+	}//end two-argument Card constructor
+	
+	public String getFace() {
+		return face;
+	}
+
+	public String getSuit() {
+		return suit;
+	}
+
+	//return String representation of Card
+	public String toString()
+	{
+		return face + " of " + suit;
+	}//end method toString
+	//compare face"Ace", "Deuce", "Three", "Four", "Five", "Six",
+	  //"Seven", "Eight", "Nine", "Ten", "Jack",
+	  //"Queen", "King"
+	public int compareFace()
+	{
+		int compare;
+		switch (this.face) {
+		case "Ace":
+			compare =  1;
+			break;
+		case "Deuce":
+			compare =  2;
+			break;
+		case "Three":
+			compare =  3;
+			break;
+		case "Four":
+			compare =  4;
+			break;
+		case "Five":
+			compare =  5;
+			break;
+		case "Six":
+			compare =  6;
+			break;
+		case "Seven":
+			compare =  7;
+			break;
+		case "Eight":
+			compare =  8;
+			break;
+		case "Nine":
+			compare =  9;
+			break;
+		case "Ten":
+			compare =  10;
+			break;
+		case "Jack":
+			compare =  11;
+			break;
+		case "Queen":
+			compare =  12;
+			break;
+		case "King":
+			compare =  13;
+			break;
+
+		default:
+			compare =  0;
+			break;
+		}
+		return compare;
+	}
+
+}//end class card

@@ -1,0 +1,10 @@
+package cn.com.dick.threepointthirteen.Invoice;
+
+public class InvoiceTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

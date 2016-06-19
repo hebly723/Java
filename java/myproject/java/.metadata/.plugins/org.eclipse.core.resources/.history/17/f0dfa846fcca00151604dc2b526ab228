@@ -1,0 +1,10 @@
+package cn.com.dick.seven.two;
+
+public class InitArray {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

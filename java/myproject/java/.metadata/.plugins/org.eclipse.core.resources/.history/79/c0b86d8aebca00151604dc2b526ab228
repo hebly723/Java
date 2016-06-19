@@ -1,0 +1,13 @@
+package cn.com.dick.square;
+public class Square {
+	//private double radio;
+	
+	public static double sphereVolume(double radio)
+	{
+		//calculate the volume
+		double volume = ( 4.0 / 3.0 ) * Math.PI * Math.pow( radio, 3 ) ;
+		
+		return volume;
+	}
+
+}

@@ -1,0 +1,21 @@
+/**
+ * 
+ */
+package cn.com.dick.seven.twentytwo;
+
+/**
+ * @author 张钊晋
+ * 
+ * 2016年2月9日下午8:10:28
+ */
+public class DrawRainbowTest {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
