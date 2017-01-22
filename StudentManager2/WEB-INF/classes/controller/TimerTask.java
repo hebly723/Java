@@ -70,7 +70,7 @@ public class TimerTask {
 			mailboxList.add(mailbox);
 		  }
 		  }
-		  mailservice.sendMailToMany("研究生院活动网站提醒", "您有一个新任务，请及时查看！<br/>"+"<a href=\"http://www.ly723.site/StudentManager2/login.html\">点击这里登录</a>", mailboxList);
+		  mailservice.sendMailToMany("研究生院活动网站提醒", "您有一个新任务，请及时查看！<br/>"+"<a href=\"http://www.ly723.site:2048/StudentManager2/login.html\">点击这里登录</a>", mailboxList);
 	  }
 	  
   } 

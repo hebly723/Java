@@ -1,7 +1,0 @@
-package cn.com.dick.seven.twentytwo;
-
-import javax.swing.JPanel;
-
-public class DrawRainbow extends JPanel {
-
-}

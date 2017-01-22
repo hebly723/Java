@@ -135,7 +135,7 @@ import javax.mail.internet.MimeMessage;
         public static void main(String[] args) throws MessagingException {
         	List<String> list = new ArrayList<String>();
         	list.add("840367769@qq.com");
-        	sendToOneByAsynchronous("研究生院活动网站提醒", "您有一个新消息，请及时查看！<br/>"+"<a href=\"http://www.ly723.site/StudentManager2/login.html\">点击这里登录</a>","840367769@qq.com");
+        	sendToOneByAsynchronous("研究生院活动网站提醒", "您有一个新消息，请及时查看！<br/>"+"<a href=\"http://www.ly723.site:2048/StudentManager2/login.html\">点击这里登录</a>","840367769@qq.com");
         }
 }
         	  

@@ -475,7 +475,7 @@ public class ActivityController {
 			if(flag==1){
 					List<String> mailList = userservice.selectStudentMailboxes();
 					if(mailList!=null&&mailList.size()>0){
-						mailservice.sendMailToMany("研究生院活动网站提醒", "有新活动下发，请及时查看！<br/>"+"<a href=\"http://www.ly723.site/StudentManager2/login.html\">点击这里登录</a>", mailList);
+						mailservice.sendMailToMany("研究生院活动网站提醒", "有新活动下发，请及时查看！<br/>"+"<a href=\"http://www.ly723.site:2048/StudentManager2/login.html\">点击这里登录</a>", mailList);
 					}
 					List activityList = null;
 					int totalCount = acservice.selectActivityNotOverDueCount();

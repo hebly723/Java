@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename field &apos;surname&apos; in &apos;cn.com.dick.threepointforteen.Employee.Employee&apos; to &apos;surName&apos;&#x0D;&#x0A;- Original project: &apos;Employee&apos;&#x0D;&#x0A;- Original element: &apos;cn.com.dick.threepointforteen.Employee.Employee.surname&apos;&#x0D;&#x0A;- Renamed element: &apos;cn.com.dick.threepointforteen.Employee.Employee.surName&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" delegate="false" deprecate="false" description="Rename field &apos;surname&apos;" flags="589826" getter="false" id="org.eclipse.jdt.ui.rename.field" input="/src&lt;cn.com.dick.threepointforteen.Employee{Employee.java[Employee^surname" name="surName" references="true" setter="false" stamp="1453644150561" textual="false" version="1.0"/>
-</session>

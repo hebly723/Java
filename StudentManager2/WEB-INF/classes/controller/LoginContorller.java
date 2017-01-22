@@ -111,14 +111,14 @@ public class LoginContorller {
 			map.put("success", "false");
 		}
 		return map;
-	}//www.ly723.site/StudentManager2/updateUserInfo.action
+	}//www.ly723.site:2048/StudentManager2/updateUserInfo.action
 	@RequestMapping("/Loginout")
 	public String Loginout(HttpSession session){
 		session.invalidate();
 		//session.removeAttribute("loginuser");
 		return "redirect:/Login.action";
 	}
-//	www.ly723.site/StudentManager2/updateUserInfo.action
+//	www.ly723.site:2048/StudentManager2/updateUserInfo.action
 	@RequestMapping("/updateUserInfo")
 	public @ResponseBody User updateUserInfo(@RequestBody User user){
 		User userOut = userservice.selectOne(user.getUserId());

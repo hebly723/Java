@@ -20,7 +20,7 @@
 					<span id="end_time" class="time">截止日期：{{activity.acDueDate}}</span>
 					<span id="end_join" class="time">报名截止日期：{{activity.acSigDueDate}}</span>
 					<p class="article_content">{{activity.acDesc}}</p>
-					<span>下载报名表：</span><a href="http://www.ly723.site/StudentManager2/activityfileDownload.action?fileName={{activity.acDoc1Name}}&acId={{activity.acId}}">{{activity.acDoc1Name}}</a><br>
+					<span>下载报名表：</span><a href="http://www.ly723.site:2048/StudentManager2/activityfileDownload.action?fileName={{activity.acDoc1Name}}&acId={{activity.acId}}">{{activity.acDoc1Name}}</a><br>
 					<span class="attention">注：上传文件必须为下载的报名表，否则无法报名.</span><br>
 					<input type="file" class="btn " id="file" name="file1" />
 					<input type="hidden" name="sigAcId" value="{{activity.acId}}" />

@@ -26,7 +26,7 @@ mainApp.controller("mainCtrl", ['$scope', '$http', '$location', 'userService', '
 				"userName": $scope.user.userName, "userMailBox": $scope.user.email,
 				"userQq": $scope.user.QQ, "userTel": $scope.user.tel,
 				"userRole": $scope.user.role, "userAcademy": $scope.user.academy});
-			var url = "http://www.ly723.site/StudentManager2/updateUser.action";
+			var url = "http://www.ly723.site:2048/StudentManager2/updateUser.action";
 			var config = {
            		headers: {
            			'Content-Type':'application/json; charset=utf-8'
@@ -53,13 +53,13 @@ mainApp.controller("mainCtrl", ['$scope', '$http', '$location', 'userService', '
 	}
 
 	$scope.changeInfo = function(){
-		var url = 'http://www.ly723.site/StudentManager2/updateUserInfo.action';
+		var url = 'http://www.ly723.site:2048/StudentManager2/updateUserInfo.action';
 		var data = 
 			JSON.stringify({"userQq": $scope.user.QQ, "userTel": $scope.user.tel, "userMailBox": $scope.user.email, "userId": $scope.user.userId});
 		$.ajax({
 			async: false,
 			type: 'post',
-			url: 'http://www.ly723.site/StudentManager2/updateUserInfo.action',
+			url: 'http://www.ly723.site:2048/StudentManager2/updateUserInfo.action',
 			contentType: 'application/json;charset=utf-8',
 			data: data,
 			success: function(data){
@@ -87,7 +87,7 @@ mainApp.controller("mainCtrl", ['$scope', '$http', '$location', 'userService', '
 	//$scope.announces2 = announceService.get2();
 	
 	$scope.selectAnnounces = function(index){
-		var url = 'http://www.ly723.site/StudentManager2/selectAnByAcademy.action';
+		var url = 'http://www.ly723.site:2048/StudentManager2/selectAnByAcademy.action';
 		var data = "";
 		if(index == 1){
 			$("[name='announceNav']").hide();
@@ -130,7 +130,7 @@ mainApp.controller("loginCtrl", ['$scope', '$http', '$location', 'userService', 
 		if($scope.user.userId != ""  && $scope.user.password != "" && $scope.user.role != ""){
 						var data = JSON.stringify(
 							{"userId": $scope.user.userId, "userPassword": $scope.user.password, "userRole": $scope.user.role});
-						var url = "http://www.ly723.site/StudentManager2/LoginValidation.action";
+						var url = "http://www.ly723.site:2048/StudentManager2/LoginValidation.action";
 
 						$http.post(url, data)
 						.success(function(data){
@@ -211,7 +211,7 @@ mainApp.controller("announceCtrl", ['$scope', '$http', '$filter', 'announceServi
            		'Content-Type':'application/json; charset=utf-8'
            	}	
        	};
-	    var url = "http://www.ly723.site/StudentManager2/updateAn.action";
+	    var url = "http://www.ly723.site:2048/StudentManager2/updateAn.action";
 		$http.post(url, data, config)
 		.success(function(data){
 				if(data.success == "true"){
@@ -237,7 +237,7 @@ mainApp.controller("announceCtrl", ['$scope', '$http', '$filter', 'announceServi
            		'Content-Type':'application/json; charset=utf-8'
            	}	
        	};
-	    var url = "http://www.ly723.site/StudentManager2/updateAn.action";
+	    var url = "http://www.ly723.site:2048/StudentManager2/updateAn.action";
 		$http.post(url, data, config)
 		.success(function(data){
 				if(data.success == "true"){
@@ -263,7 +263,7 @@ mainApp.controller("announceCtrl", ['$scope', '$http', '$filter', 'announceServi
 mainApp.controller("sActivityCtrl", ['$scope', '$filter', '$http', '$location', '$routeParams', 'activityService', 'identificationService', function($scope, $filter, $http, $location, $routeParams, activityService, identificationService){
 	identificationService($scope.user);
 	$scope.activities = activityService.get();
-	var url = 'http://www.ly723.site/StudentManager2/student/ActivityNotOverDue.action';
+	var url = 'http://www.ly723.site:2048/StudentManager2/student/ActivityNotOverDue.action';
 	$scope.sActivityPage = {
             currentPage: 1,
             totalItems: 100,
@@ -286,14 +286,14 @@ mainApp.controller("sActivityCtrl", ['$scope', '$filter', '$http', '$location', 
 
     $scope.chooseActivity = function(type){
     	if(type == "new"){
-			url = 'http://www.ly723.site/StudentManager2/student/ActivityNotOverDue.action';
+			url = 'http://www.ly723.site:2048/StudentManager2/student/ActivityNotOverDue.action';
 			$scope.sActivityPage.onChange();
     	}else if(type == "over"){
-    		url = 'http://www.ly723.site/StudentManager2/student/ActivityOverDue.action';
+    		url = 'http://www.ly723.site:2048/StudentManager2/student/ActivityOverDue.action';
 			$scope.sActivityPage.onChange();
     	}else if(type == "applyed"){
-    		url = 'http://www.ly723.site/StudentManager2/student/signed.action';
-    		//url = 'http://www.ly723.site/StudentManager2/student/ActivityOverDue.action';
+    		url = 'http://www.ly723.site:2048/StudentManager2/student/signed.action';
+    		//url = 'http://www.ly723.site:2048/StudentManager2/student/ActivityOverDue.action';
     		$scope.sActivityPage.onChange();
     	}
 	}
@@ -328,7 +328,7 @@ mainApp.controller("sActivityCtrl", ['$scope', '$filter', '$http', '$location', 
 		formData.append("sigDate", currentTime);
      	$.ajax({ 
          	async: false,
-         	url : 'http://www.ly723.site/StudentManager2/student/insertSign.action',  
+         	url : 'http://www.ly723.site:2048/StudentManager2/student/insertSign.action',  
          	type : 'POST',  
          	data : formData,  
          	processData : false,     
@@ -371,7 +371,7 @@ mainApp.controller("tReportCtrl", ['$scope', '$http', 'identificationService', f
 			reportArray.push(select.eq(i).val());
 		}
 		var data = JSON.stringify(reportArray);
-		var url = 'http://www.ly723.site/StudentManager2/YearEndExcel.action';
+		var url = 'http://www.ly723.site:2048/StudentManager2/YearEndExcel.action';
 		$http.post(url, data).success(function(data){
 			if(data.url != "" && data.url != null){
 				alert("报表填写成功！");
@@ -390,7 +390,7 @@ mainApp.controller("tReportCtrl", ['$scope', '$http', 'identificationService', f
 mainApp.controller("tTaskCtrl", ['$scope', '$http', '$location', 'taskService', 'activityService', 'identificationService', function($scope, $http, $location, taskService, activityService, identificationService){
 	identificationService($scope.user);
 	$scope.tasks = [];
-	var url = 'http://www.ly723.site/StudentManager2/teacher/TaskNotOverDue.action';
+	var url = 'http://www.ly723.site:2048/StudentManager2/teacher/TaskNotOverDue.action';
 	$scope.tTaskPage = {
             currentPage: 1,
             totalItems: 100,
@@ -418,16 +418,16 @@ mainApp.controller("tTaskCtrl", ['$scope', '$http', '$location', 'taskService', 
 
     $scope.chooseTask = function(type){
     	if(type == "new"){
-			url = 'http://www.ly723.site/StudentManager2/teacher/TaskNotOverDue.action';
+			url = 'http://www.ly723.site:2048/StudentManager2/teacher/TaskNotOverDue.action';
 			$scope.tTaskPage.onChange();
     	}else if(type == "over"){
-    		url = 'http://www.ly723.site/StudentManager2/teacher/TaskOverDue.action';
+    		url = 'http://www.ly723.site:2048/StudentManager2/teacher/TaskOverDue.action';
 			$scope.tTaskPage.onChange();
     	}
 	}
 
 	$scope.start = function(tasId, tasDueId, index){
-		var url = "http://www.ly723.site/StudentManager2/teacher/activeTask.action";
+		var url = "http://www.ly723.site:2048/StudentManager2/teacher/activeTask.action";
 		var data = JSON.stringify({"tasId": tasId, "tasDueId": tasDueId});
 		$http.post(url, data).success(function(data){
 			if(data.success){
@@ -442,7 +442,7 @@ mainApp.controller("tTaskCtrl", ['$scope', '$http', '$location', 'taskService', 
 			var formData = new FormData($("#finishForm"+index)[0]);
 			$.ajax({
 				async: false,
-         		url : 'http://www.ly723.site/StudentManager2/teacher/finishTask.action',  
+         		url : 'http://www.ly723.site:2048/StudentManager2/teacher/finishTask.action',  
          		type : 'POST',  
          		data : formData,  
          		processData : false,     
@@ -469,7 +469,7 @@ mainApp.controller("tActivityCtrl", ['$scope', '$http', '$filter', '$location', 
 	identificationService($scope.user);
 	$scope.activities = activityService.get();
 	
-	var url1 = 'http://www.ly723.site/StudentManager2/teacher/ActivityNotOverDue.action';
+	var url1 = 'http://www.ly723.site:2048/StudentManager2/teacher/ActivityNotOverDue.action';
 	$scope.tActivityPage = {
             currentPage: 1,
             totalItems: 100,
@@ -491,10 +491,10 @@ mainApp.controller("tActivityCtrl", ['$scope', '$http', '$filter', '$location', 
 
     $scope.chooseActivity = function(type){
     	if(type == "new"){
-			url1 = 'http://www.ly723.site/StudentManager2/teacher/ActivityNotOverDue.action';
+			url1 = 'http://www.ly723.site:2048/StudentManager2/teacher/ActivityNotOverDue.action';
 			$scope.tActivityPage.onChange();
     	}else if(type == "over"){
-    		url1 = 'http://www.ly723.site/StudentManager2/teacher/ActivityOverDue.action';
+    		url1 = 'http://www.ly723.site:2048/StudentManager2/teacher/ActivityOverDue.action';
 			$scope.tActivityPage.onChange();
     	}
 	}
@@ -523,7 +523,7 @@ mainApp.controller("tActivityCtrl", ['$scope', '$http', '$filter', '$location', 
 	});
 
 	$scope.applyDetail = [];
-    var url2 = 'http://www.ly723.site/StudentManager2/teacher/SignUnhandled.action';
+    var url2 = 'http://www.ly723.site:2048/StudentManager2/teacher/SignUnhandled.action';
 	$scope.applyDetailPage = {
             currentPage: 1,
             totalItems: 100,
@@ -545,10 +545,10 @@ mainApp.controller("tActivityCtrl", ['$scope', '$http', '$filter', '$location', 
     $scope.chooseApply = function(type){
 		if(type == "new"){
 			console.log(type);
-			url2 = 'http://www.ly723.site/StudentManager2/teacher/SignUnhandled.action';
+			url2 = 'http://www.ly723.site:2048/StudentManager2/teacher/SignUnhandled.action';
 			$scope.applyDetailPage.onChange();
 		}else if(type == "handled"){
-			url2 = 'http://www.ly723.site/StudentManager2/teacher/Signhandled.action';
+			url2 = 'http://www.ly723.site:2048/StudentManager2/teacher/Signhandled.action';
 			$scope.applyDetailPage.onChange();
 		}
 	}
@@ -560,7 +560,7 @@ mainApp.controller("tActivityCtrl", ['$scope', '$http', '$filter', '$location', 
     	var data = '{"sigAcId": "' + acId + '", "sigId": "' + sigId + '", "sigStatus": "' + check + '", "sigHanDate": "' + currentTime + '"}';
 		$.ajax({
 			type: 'post',
-			url: 'http://www.ly723.site/StudentManager2/teacher/updateSignStatus.action',
+			url: 'http://www.ly723.site:2048/StudentManager2/teacher/updateSignStatus.action',
 			data: data,
 			contentType: "application/json;charset=utf-8",
 			async: true,
@@ -578,7 +578,7 @@ mainApp.controller("tActivityCtrl", ['$scope', '$http', '$filter', '$location', 
 mainApp.controller("tInformCtrl", ['$scope', '$http', 'informService', 'identificationService', function($scope, $http, informService, identificationService){
 	identificationService($scope.user);
 	$scope.informs = informService.get();
-	var url = 'http://www.ly723.site/StudentManager2/MessagesUnread.action?notRecId=';
+	var url = 'http://www.ly723.site:2048/StudentManager2/MessagesUnread.action?notRecId=';
 	$scope.tInformPage = {
             currentPage: 1,
             totalItems: 100,
@@ -600,20 +600,20 @@ mainApp.controller("tInformCtrl", ['$scope', '$http', 'informService', 'identifi
 
     $scope.chooseInform = function(type){
     	if(type == "new"){
-			url = 'http://www.ly723.site/StudentManager2/MessagesUnread.action?notRecId=';
+			url = 'http://www.ly723.site:2048/StudentManager2/MessagesUnread.action?notRecId=';
 			$scope.tInformPage.onChange();
     	}else if(type == "readed"){
-    		url = 'http://www.ly723.site/StudentManager2/MessagesAlread.action?notRecId=';
+    		url = 'http://www.ly723.site:2048/StudentManager2/MessagesAlread.action?notRecId=';
 			$scope.tInformPage.onChange();
     	}else if(type == "sended"){
-    		url = 'http://www.ly723.site/StudentManager2/MessagesAll.action?notSenId=';
+    		url = 'http://www.ly723.site:2048/StudentManager2/MessagesAll.action?notSenId=';
 			$scope.tInformPage.onChange();
     	}
 	}
 
 	$scope.read = function(notId, index){
 		$.ajax({
-			url: 'http://www.ly723.site/StudentManager2/updateMessageStatus.action',
+			url: 'http://www.ly723.site:2048/StudentManager2/updateMessageStatus.action',
 			type: 'post',
 			data: JSON.stringify({notId: notId, notStatus: '1'}),
 			contentType: "application/json;charset=utf-8",
@@ -635,7 +635,7 @@ mainApp.controller("tMessageCtrl", ['$scope', '$http', '$filter', 'identificatio
 	$scope.selectBoss = function(){
 		$.ajax({
 			type: 'get',
-			url: 'http://www.ly723.site/StudentManager2/teacher/queryBoss.action',
+			url: 'http://www.ly723.site:2048/StudentManager2/teacher/queryBoss.action',
 			success: function(data){
 				$scope.bosses = data;
 			}
@@ -658,7 +658,7 @@ mainApp.controller("tMessageCtrl", ['$scope', '$http', '$filter', 'identificatio
 		}
 		$.ajax({
 			type: 'post',
-			url: 'http://www.ly723.site/StudentManager2/insertMessages.action',
+			url: 'http://www.ly723.site:2048/StudentManager2/insertMessages.action',
 			data: JSON.stringify({ selectedIDs: _list }),  
 			contentType: "application/json;charset=utf-8",
 			success: function(data){
@@ -680,7 +680,7 @@ mainApp.controller("tMessageCtrl", ['$scope', '$http', '$filter', 'identificatio
 mainApp.controller("bReportCtrl", ['$scope', '$http', 'identificationService', function($scope, $http, identificationService){
 	identificationService($scope.user);
 	$scope.getReport = function(){
-		var url = 'http://www.ly723.site/StudentManager2/ListYearExcel.action';
+		var url = 'http://www.ly723.site:2048/StudentManager2/ListYearExcel.action';
 		$http.get(url).success(function(data){
 			if(angular.isArray(data)){
 				$scope.reports = data;
@@ -691,7 +691,7 @@ mainApp.controller("bReportCtrl", ['$scope', '$http', 'identificationService', f
 mainApp.controller("bActivityCtrl", ['$scope', '$http', '$location', '$routeParams', 'activityService', 'identificationService', function($scope, $http, $location, $routeParams, activityService, identificationService){
 	identificationService($scope.user);
 	$scope.activities = activityService.get();
-	var url = 'http://www.ly723.site/StudentManager2/boss/ActivityNotOverDue.action';
+	var url = 'http://www.ly723.site:2048/StudentManager2/boss/ActivityNotOverDue.action';
 	$scope.bActivityPage = {
             currentPage: 1,
             totalItems: 100,
@@ -714,10 +714,10 @@ mainApp.controller("bActivityCtrl", ['$scope', '$http', '$location', '$routePara
 
     $scope.chooseActivity = function(type){
     	if(type == 'new'){
-    		url = 'http://www.ly723.site/StudentManager2/boss/ActivityNotOverDue.action';
+    		url = 'http://www.ly723.site:2048/StudentManager2/boss/ActivityNotOverDue.action';
     		$scope.bActivityPage.onChange();
     	}else if(type == 'over'){
-    		url = 'http://www.ly723.site/StudentManager2/boss/ActivityOverDue.action';
+    		url = 'http://www.ly723.site:2048/StudentManager2/boss/ActivityOverDue.action';
     		$scope.bActivityPage.onChange();
     	}
     }
@@ -753,7 +753,7 @@ mainApp.controller("bActivityCtrl", ['$scope', '$http', '$location', '$routePara
 				}
 			};
 			$.ajax({
-				url: 'http://www.ly723.site/StudentManager2/teacher/dueAcademy.action',
+				url: 'http://www.ly723.site:2048/StudentManager2/teacher/dueAcademy.action',
 				data: '{"acId": "' + id + '"}',
 				type: 'post',
 				contentType: 'application/json;charset=utf-8',
@@ -783,7 +783,7 @@ mainApp.controller("bActivityCtrl", ['$scope', '$http', '$location', '$routePara
 	});
 
 	$scope.applyDetail = [];
-    var url2 = 'http://www.ly723.site/StudentManager2/boss/Signhandled.action';
+    var url2 = 'http://www.ly723.site:2048/StudentManager2/boss/Signhandled.action';
 	$scope.applyDetailPage = {
             currentPage: 1,
             totalItems: 100,
@@ -812,7 +812,7 @@ mainApp.controller("bActivityCtrl", ['$scope', '$http', '$location', '$routePara
 					+ '"acCreId": "' + $scope.user.userId + '"}';
 		$.ajax({
 			type: 'post',
-			url: 'http://www.ly723.site/StudentManager2/teacher/deleteActivity.action?pageNow='+$scope.bActivityPage.currentPage,
+			url: 'http://www.ly723.site:2048/StudentManager2/teacher/deleteActivity.action?pageNow='+$scope.bActivityPage.currentPage,
 			contentType: "application/json;charset=utf-8",
 			data: data,
 			success: function(data){
@@ -832,7 +832,7 @@ mainApp.controller("bActivityCtrl", ['$scope', '$http', '$location', '$routePara
 		var formData = new FormData($("#alterActForm")[0]); 
      	$.ajax({ 
          	async: false,
-         	url : 'http://www.ly723.site/StudentManager2/teacher/updateActivity.action?pageNow='+$scope.bActivityPage.currentPage,  
+         	url : 'http://www.ly723.site:2048/StudentManager2/teacher/updateActivity.action?pageNow='+$scope.bActivityPage.currentPage,  
          	type : 'POST',  
          	data : formData,  
          	processData : false,     
@@ -857,7 +857,7 @@ mainApp.controller("bTaskCtrl", ['$scope', '$http', '$filter', '$location', '$ro
 	identificationService($scope.user);
 	$scope.myTask = taskService.get();
 
-	var url = 'http://www.ly723.site/StudentManager2/boss/TaskNotOverDue.action';
+	var url = 'http://www.ly723.site:2048/StudentManager2/boss/TaskNotOverDue.action';
 	$scope.bTaskPage = {
             currentPage: 1,
             totalItems: 100,
@@ -878,10 +878,10 @@ mainApp.controller("bTaskCtrl", ['$scope', '$http', '$filter', '$location', '$ro
     };
     $scope.chooseTask = function(type){
     	if(type == "new"){
-			url = 'http://www.ly723.site/StudentManager2/boss/TaskNotOverDue.action';
+			url = 'http://www.ly723.site:2048/StudentManager2/boss/TaskNotOverDue.action';
 			$scope.bTaskPage.onChange();
     	}else if(type == "over"){
-    		url = 'http://www.ly723.site/StudentManager2/boss/TaskOverDue.action';
+    		url = 'http://www.ly723.site:2048/StudentManager2/boss/TaskOverDue.action';
 			$scope.bTaskPage.onChange();
     	}
 	}
@@ -904,7 +904,7 @@ mainApp.controller("bTaskCtrl", ['$scope', '$http', '$filter', '$location', '$ro
 	$scope.choose = true;
 	$scope.teachers = [];
 	$scope.selectAllTeacher = function(){
-		var url = "http://www.ly723.site/StudentManager2/boss/queryTeachers.action"
+		var url = "http://www.ly723.site:2048/StudentManager2/boss/queryTeachers.action"
 		$http.get(url).success(function(data){
 			if(angular.isArray(data)){
 				$scope.teachers = data;
@@ -921,7 +921,7 @@ mainApp.controller("bTaskCtrl", ['$scope', '$http', '$filter', '$location', '$ro
 		currentTime = $filter("date")(currentTime, "yyyy-MM-dd HH:mm");
 		formData.append("tasCreDate", currentTime);
 		formData.append("users", $("#tasDueSelect").val());
-		var url = 'http://www.ly723.site/StudentManager2/boss/insertTaskByList.action';
+		var url = 'http://www.ly723.site:2048/StudentManager2/boss/insertTaskByList.action';
      	$.ajax({ 
          	async: false,
          	url : url,  
@@ -949,9 +949,9 @@ mainApp.controller("bTaskCtrl", ['$scope', '$http', '$filter', '$location', '$ro
 	$scope.delTask = function(tasId, tasStatus){
 		var url = '';
 		if(tasStatus == 3 || tasStatus == 2){
-			url = 'http://www.ly723.site/StudentManager2/boss/deleteTaskOverDue.action';
+			url = 'http://www.ly723.site:2048/StudentManager2/boss/deleteTaskOverDue.action';
 		}else{
-			url = 'http://www.ly723.site/StudentManager2/boss/deleteTask.action';
+			url = 'http://www.ly723.site:2048/StudentManager2/boss/deleteTask.action';
 		}
 		var config = {
            	headers: {
@@ -971,7 +971,7 @@ mainApp.controller("bTaskCtrl", ['$scope', '$http', '$filter', '$location', '$ro
 	}
 
 	$scope.altTask = function(){
-		var url = 'http://www.ly723.site/StudentManager2/boss/updateTask.action';
+		var url = 'http://www.ly723.site:2048/StudentManager2/boss/updateTask.action';
 		var formData = new FormData($("#changeActForm")[0]);
 		formData.append("pageNow", $scope.bTaskPage.currentPage);
 		$.ajax({ 
@@ -1000,7 +1000,7 @@ mainApp.controller("bMessageCtrl", ['$scope', '$http', '$filter', 'identificatio
 	$scope.selectTeacher = function(){
 		$.ajax({
 			type: 'get',
-			url: 'http://www.ly723.site/StudentManager2/boss/queryTeachers.action',
+			url: 'http://www.ly723.site:2048/StudentManager2/boss/queryTeachers.action',
 			success: function(data){
 				$scope.teachers = data;
 			}
@@ -1023,7 +1023,7 @@ mainApp.controller("bMessageCtrl", ['$scope', '$http', '$filter', 'identificatio
 		}
 		$.ajax({
 			type: 'post',
-			url: 'http://www.ly723.site/StudentManager2/insertMessages.action',
+			url: 'http://www.ly723.site:2048/StudentManager2/insertMessages.action',
 			data: JSON.stringify({ selectedIDs: _list }),  
 			contentType: "application/json;charset=utf-8",
 			success: function(data){

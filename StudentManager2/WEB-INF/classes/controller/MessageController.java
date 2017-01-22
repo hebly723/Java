@@ -119,7 +119,7 @@ public class MessageController {
 		if(flag==1){
 			User user=Userservice.selectOne(message.getNotRecId());
 			String mailbox = user.getUserMailBox();
-			mailservice.sendMailToOne("研究生院活动网站提醒", "您有一个新消息，请及时查看！<br/>"+"<a href=\"http://www.ly723.site/StudentManager2/login.html\">点击这里登录</a>", mailbox);
+			mailservice.sendMailToOne("研究生院活动网站提醒", "您有一个新消息，请及时查看！<br/>"+"<a href=\"http://www.ly723.site:2048/StudentManager2/login.html\">点击这里登录</a>", mailbox);
 			return 1;
 		}
 		return 0;
@@ -134,7 +134,7 @@ public class MessageController {
 				User user=Userservice.selectOne(mes.getNotRecId());
 				list.add(user.getUserMailBox());
 			}
-			mailservice.sendMailToMany("研究生院活动网站提醒", "您有一个新消息，请及时查看！<br/>"+"<a href=\"http://www.ly723.site/StudentManager2/login.html\">点击这里登录</a>", list);
+			mailservice.sendMailToMany("研究生院活动网站提醒", "您有一个新消息，请及时查看！<br/>"+"<a href=\"http://www.ly723.site:2048/StudentManager2/login.html\">点击这里登录</a>", list);
 			return 1;
 		}
 		return 0;

@@ -135,7 +135,7 @@ public class TaskController {
 				String mailbox = userservice.selectOne(teacher.getUserId()).getUserMailBox();
 				mailservice.sendMailToOne("研究生院活动网站提醒", 
 						"您有一个新任务，请及时查看！<br/>"+
-				"<a href=\"http://www.ly723.site/StudentManager2/login.html\">点击这里登录</a>", mailbox);
+				"<a href=\"http://www.ly723.site:2048/StudentManager2/login.html\">点击这里登录</a>", mailbox);
 				}
 //				List<Task> taskList = new ArrayList<Task>();
 				int totalCount = tasservice.selectTaskNotOverDueByTasCreIdCount(task.getTasCreId());
@@ -247,7 +247,7 @@ public class TaskController {
 				String mailbox = userservice.selectOne(teacher.getUserId()).getUserMailBox();
 				mailservice.sendMailToOne("研究生院活动网站提醒", 
 						"您有一个新任务，请及时查看！<br/>"+
-				"<a href=\"http://www.ly723.site/StudentManager2/login.html\">点击这里登录</a>", mailbox);
+				"<a href=\"http://www.ly723.site:2048/StudentManager2/login.html\">点击这里登录</a>", mailbox);
 				}
 //				List<Task> taskList = new ArrayList<Task>();
 				int totalCount = tasservice.selectTaskNotOverDueByTasCreIdCount(task.getTasCreId());
@@ -361,7 +361,7 @@ public class TaskController {
 			String mailbox = userservice.selectOne(task.getTasDueId()).getUserMailBox();
 			mailservice.sendMailToOne("研究生院活动网站提醒", 
 					"您有一个新任务，请及时查看！<br/>"+
-			"<a href=\"http://www.ly723.site/StudentManager2/login.html\">点击这里登录</a>", mailbox);
+			"<a href=\"http://www.ly723.site:2048/StudentManager2/login.html\">点击这里登录</a>", mailbox);
 //			}
 			List taskList = new ArrayList();
 			int totalCount = tasservice.selectTaskNotOverDueByTasCreIdCount(task.getTasCreId());

@@ -131,7 +131,7 @@ customService.service("activityService", ['$filter', function($filter){
 		formData.append("academys", academyArr);
      	$.ajax({ 
          	async: false,
-         	url : 'http://www.ly723.site/StudentManager2/teacher/insertActivity.action',  
+         	url : 'http://www.ly723.site:2048/StudentManager2/teacher/insertActivity.action',  
          	type : 'POST',  
          	data : formData,  
          	processData : false,     

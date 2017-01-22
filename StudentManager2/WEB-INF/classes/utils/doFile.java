@@ -501,9 +501,9 @@ public Map ListFile()
          String str2 = realName.substring(realName.indexOf('(') + 1, realName.indexOf(')'));
          map.put("userId", str);
          map.put("username", str2);
-         map.put("YearEndurl", "http://www.ly723.site/StudentManager2/changeExcel.action?userId="+str);
-         map.put("AcList", "http://www.ly723.site/StudentManager2/downloadAcList.action?userId="+str);
-         map.put("AcMaster", "http://www.ly723.site/StudentManager2/downloadAcMaster.action?userId="+str);
+         map.put("YearEndurl", "http://www.ly723.site:2048/StudentManager2/changeExcel.action?userId="+str);
+         map.put("AcList", "http://www.ly723.site:2048/StudentManager2/downloadAcList.action?userId="+str);
+         map.put("AcMaster", "http://www.ly723.site:2048/StudentManager2/downloadAcMaster.action?userId="+str);
          //map.put("filename", value)
          list.add(map);
 //         list.put(file.getName(), realName);

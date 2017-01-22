@@ -1,9 +1,0 @@
-package java1;
-static final int er = value;
-public class java1 
-{
-	public static void main(String args[])
-	{
-		System.out.println("Welcome to Java Programing ");
-	}
-}

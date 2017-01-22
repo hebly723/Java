@@ -10,8 +10,8 @@ DEBUG [http-bio-80-exec-236] - Translating SQLException with SQL state '23000', 
 DEBUG [http-bio-80-exec-236] - Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@96a6d01]
 DEBUG [http-bio-80-exec-236] - Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@96a6d01]
 DEBUG [http-bio-80-exec-236] - Initiating transaction rollback
-DEBUG [http-bio-80-exec-236] - Rolling back JDBC transaction on Connection [jdbc:mysql://www.ly723.site:3306/dbmanager, UserName=root@121.42.145.7, MySQL-AB JDBC Driver]
-DEBUG [http-bio-80-exec-236] - Releasing JDBC Connection [jdbc:mysql://www.ly723.site:3306/dbmanager, UserName=root@121.42.145.7, MySQL-AB JDBC Driver] after transaction
+DEBUG [http-bio-80-exec-236] - Rolling back JDBC transaction on Connection [jdbc:mysql://www.ly723.site:2048:3306/dbmanager, UserName=root@121.42.145.7, MySQL-AB JDBC Driver]
+DEBUG [http-bio-80-exec-236] - Releasing JDBC Connection [jdbc:mysql://www.ly723.site:2048:3306/dbmanager, UserName=root@121.42.145.7, MySQL-AB JDBC Driver] after transaction
 DEBUG [http-bio-80-exec-236] - Returning JDBC Connection to DataSource
 DEBUG [http-bio-80-exec-236] - Resolving exception from handler [public java.util.List controller.TaskController.insertTask(org.springframework.web.multipart.MultipartFile,org.springframework.web.multipart.MultipartFile,org.springframework.web.multipart.MultipartFile,po.Task) throws java.lang.Exception]: org.springframework.dao.DataIntegrityViolationException: 
 ### Error updating database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`dbmanager`.`task`, CONSTRAINT `fk_NO_SEN_ID_6` FOREIGN KEY (`TAS_CRE_ID`) REFERENCES `user` (`USER_ID`) ON DELETE CASCADE ON UPDATE CASCADE)

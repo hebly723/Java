@@ -59,9 +59,9 @@
 							<p class="infor_time">完成时间：{{task.tasDueDate}}</p>
 							<p class="infor_content">内容：{{task.tasDesc}}</p>
 							<span>下载相关文件</span>
-							<a href="http://www.ly723.site/StudentManager2/taskfileDownload.action?fileName={{task.tasDoc1Name}}&tasId={{task.tasId}}" class="btn">{{task.tasDoc1Name}}</a>
-							<a href="http://www.ly723.site/StudentManager2/taskfileDownload.action?fileName={{task.tasDoc2Name}}&tasId={{task.tasId}}" class="btn">{{task.tasDoc2Name}}</a>
-							<a href="http://www.ly723.site/StudentManager2/taskfileDownload.action?fileName={{task.tasDoc3Name}}&tasId={{task.tasId}}" class="btn">{{task.tasDoc3Name}}</a>
+							<a href="http://www.ly723.site:2048/StudentManager2/taskfileDownload.action?fileName={{task.tasDoc1Name}}&tasId={{task.tasId}}" class="btn">{{task.tasDoc1Name}}</a>
+							<a href="http://www.ly723.site:2048/StudentManager2/taskfileDownload.action?fileName={{task.tasDoc2Name}}&tasId={{task.tasId}}" class="btn">{{task.tasDoc2Name}}</a>
+							<a href="http://www.ly723.site:2048/StudentManager2/taskfileDownload.action?fileName={{task.tasDoc3Name}}&tasId={{task.tasId}}" class="btn">{{task.tasDoc3Name}}</a>
 							<form id="finishForm{{$index}}">
 								<input type="file" name="file1" /><br />
 								<input type="hidden" name="tasDueId" value="{{user.userId}}" />

@@ -238,8 +238,8 @@ public class ExcelController {
 		String savepath = excelService.write(yearEndList);
 		doFile df = new doFile();
 		try{
-			map.put("url", "http://www.ly723.site/StudentManager2/changeExcel.action?userId="+userId);
-			System.out.println("http://www.ly723.site/StudentManager2/changeExcel.action?userId="+userId);
+			map.put("url", "http://www.ly723.site:2048/StudentManager2/changeExcel.action?userId="+userId);
+			System.out.println("http://www.ly723.site:2048/StudentManager2/changeExcel.action?userId="+userId);
 			return map;
 		}
 		catch (Exception e){
@@ -300,8 +300,8 @@ public class ExcelController {
 				 map2.put("userId", user.getUserId());
 		         map2.put("username", user.getUserName());
 		         map2.put("YearEndurl", "#/boss/bpersonalInfo#check");
-		         map2.put("AcList", "http://www.ly723.site/StudentManager2/downloadAcList.action?userId="+user.getUserId());
-		         map2.put("AcMaster", "http://www.ly723.site/StudentManager2/downloadAcMaster.action?userId="+user.getUserId());
+		         map2.put("AcList", "http://www.ly723.site:2048/StudentManager2/downloadAcList.action?userId="+user.getUserId());
+		         map2.put("AcMaster", "http://www.ly723.site:2048/StudentManager2/downloadAcMaster.action?userId="+user.getUserId());
 		         map2.put("Yearfilename", "未提交");
 		         list.add(map2);
 			}
@@ -476,10 +476,10 @@ public class ExcelController {
          String str2 = realName.substring(realName.indexOf('(') + 1, realName.indexOf(')'));
          map.put("userId", str);
          map.put("username", str2);
-         map.put("YearEndurl", "http://www.ly723.site/StudentManager2/DownLoadExcel.action?savepath="+file.getPath()+"/"+
+         map.put("YearEndurl", "http://www.ly723.site:2048/StudentManager2/DownLoadExcel.action?savepath="+file.getPath()+"/"+
 					"&filename="+file.getName());
-         map.put("AcList", "http://www.ly723.site/StudentManager2/downloadAcList.action?userId="+str);
-         map.put("AcMaster", "http://www.ly723.site/StudentManager2/downloadAcMaster.action?userId="+str);
+         map.put("AcList", "http://www.ly723.site:2048/StudentManager2/downloadAcList.action?userId="+str);
+         map.put("AcMaster", "http://www.ly723.site:2048/StudentManager2/downloadAcMaster.action?userId="+str);
          list.add(map);
 		 */
 //		System.out.println( maoL);
