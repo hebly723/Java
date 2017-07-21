@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mapper.SignMapper" >
+  <resultMap id="BaseResultMap" type="po.Sign" >
+    <id column="SIG_ID" property="sigId" jdbcType="INTEGER" />
+    <result column="AC_ID" property="acId" jdbcType="INTEGER" />
+    <result column="SIG_PER_ID" property="sigPerId" jdbcType="VARCHAR" />
+    <result column="SIG_DATE" property="sigDate" jdbcType="TIMESTAMP" />
+    <result column="SIG_DOC_ID" property="sigDocId" jdbcType="VARCHAR" />
+    <result column="SIG_DOC1_NAME" property="sigDoc1Name" jdbcType="VARCHAR" />
+    <result column="SIG_DOC2_NAME" property="sigDoc2Name" jdbcType="VARCHAR" />
+    <result column="SIG_DOC3_NAME" property="sigDoc3Name" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    SIG_ID, AC_ID, SIG_PER_ID, SIG_DATE, SIG_DOC_ID, SIG_DOC1_NAME, SIG_DOC2_NAME, SIG_DOC3_NAME
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="po.SignExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sign
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sign
+    where SIG_ID = #{sigId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sign
+    where SIG_ID = #{sigId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="po.SignExample" >
+    delete from sign
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="po.Sign" >
+    insert into sign (SIG_ID, AC_ID, SIG_PER_ID, 
+      SIG_DATE, SIG_DOC_ID, SIG_DOC1_NAME, 
+      SIG_DOC2_NAME, SIG_DOC3_NAME)
+    values (#{sigId,jdbcType=INTEGER}, #{acId,jdbcType=INTEGER}, #{sigPerId,jdbcType=VARCHAR}, 
+      #{sigDate,jdbcType=TIMESTAMP}, #{sigDocId,jdbcType=VARCHAR}, #{sigDoc1Name,jdbcType=VARCHAR}, 
+      #{sigDoc2Name,jdbcType=VARCHAR}, #{sigDoc3Name,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="po.Sign" >
+    insert into sign
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sigId != null" >
+        SIG_ID,
+      </if>
+      <if test="acId != null" >
+        AC_ID,
+      </if>
+      <if test="sigPerId != null" >
+        SIG_PER_ID,
+      </if>
+      <if test="sigDate != null" >
+        SIG_DATE,
+      </if>
+      <if test="sigDocId != null" >
+        SIG_DOC_ID,
+      </if>
+      <if test="sigDoc1Name != null" >
+        SIG_DOC1_NAME,
+      </if>
+      <if test="sigDoc2Name != null" >
+        SIG_DOC2_NAME,
+      </if>
+      <if test="sigDoc3Name != null" >
+        SIG_DOC3_NAME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sigId != null" >
+        #{sigId,jdbcType=INTEGER},
+      </if>
+      <if test="acId != null" >
+        #{acId,jdbcType=INTEGER},
+      </if>
+      <if test="sigPerId != null" >
+        #{sigPerId,jdbcType=VARCHAR},
+      </if>
+      <if test="sigDate != null" >
+        #{sigDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sigDocId != null" >
+        #{sigDocId,jdbcType=VARCHAR},
+      </if>
+      <if test="sigDoc1Name != null" >
+        #{sigDoc1Name,jdbcType=VARCHAR},
+      </if>
+      <if test="sigDoc2Name != null" >
+        #{sigDoc2Name,jdbcType=VARCHAR},
+      </if>
+      <if test="sigDoc3Name != null" >
+        #{sigDoc3Name,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="po.SignExample" resultType="java.lang.Integer" >
+    select count(*) from sign
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update sign
+    <set >
+      <if test="record.sigId != null" >
+        SIG_ID = #{record.sigId,jdbcType=INTEGER},
+      </if>
+      <if test="record.acId != null" >
+        AC_ID = #{record.acId,jdbcType=INTEGER},
+      </if>
+      <if test="record.sigPerId != null" >
+        SIG_PER_ID = #{record.sigPerId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sigDate != null" >
+        SIG_DATE = #{record.sigDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.sigDocId != null" >
+        SIG_DOC_ID = #{record.sigDocId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sigDoc1Name != null" >
+        SIG_DOC1_NAME = #{record.sigDoc1Name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sigDoc2Name != null" >
+        SIG_DOC2_NAME = #{record.sigDoc2Name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sigDoc3Name != null" >
+        SIG_DOC3_NAME = #{record.sigDoc3Name,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update sign
+    set SIG_ID = #{record.sigId,jdbcType=INTEGER},
+      AC_ID = #{record.acId,jdbcType=INTEGER},
+      SIG_PER_ID = #{record.sigPerId,jdbcType=VARCHAR},
+      SIG_DATE = #{record.sigDate,jdbcType=TIMESTAMP},
+      SIG_DOC_ID = #{record.sigDocId,jdbcType=VARCHAR},
+      SIG_DOC1_NAME = #{record.sigDoc1Name,jdbcType=VARCHAR},
+      SIG_DOC2_NAME = #{record.sigDoc2Name,jdbcType=VARCHAR},
+      SIG_DOC3_NAME = #{record.sigDoc3Name,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="po.Sign" >
+    update sign
+    <set >
+      <if test="acId != null" >
+        AC_ID = #{acId,jdbcType=INTEGER},
+      </if>
+      <if test="sigPerId != null" >
+        SIG_PER_ID = #{sigPerId,jdbcType=VARCHAR},
+      </if>
+      <if test="sigDate != null" >
+        SIG_DATE = #{sigDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sigDocId != null" >
+        SIG_DOC_ID = #{sigDocId,jdbcType=VARCHAR},
+      </if>
+      <if test="sigDoc1Name != null" >
+        SIG_DOC1_NAME = #{sigDoc1Name,jdbcType=VARCHAR},
+      </if>
+      <if test="sigDoc2Name != null" >
+        SIG_DOC2_NAME = #{sigDoc2Name,jdbcType=VARCHAR},
+      </if>
+      <if test="sigDoc3Name != null" >
+        SIG_DOC3_NAME = #{sigDoc3Name,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where SIG_ID = #{sigId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="po.Sign" >
+    update sign
+    set AC_ID = #{acId,jdbcType=INTEGER},
+      SIG_PER_ID = #{sigPerId,jdbcType=VARCHAR},
+      SIG_DATE = #{sigDate,jdbcType=TIMESTAMP},
+      SIG_DOC_ID = #{sigDocId,jdbcType=VARCHAR},
+      SIG_DOC1_NAME = #{sigDoc1Name,jdbcType=VARCHAR},
+      SIG_DOC2_NAME = #{sigDoc2Name,jdbcType=VARCHAR},
+      SIG_DOC3_NAME = #{sigDoc3Name,jdbcType=VARCHAR}
+    where SIG_ID = #{sigId,jdbcType=INTEGER}
+  </update>
+</mapper>

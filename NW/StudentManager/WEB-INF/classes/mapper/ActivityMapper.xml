@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mapper.ActivityMapper" >
+  <resultMap id="BaseResultMap" type="po.Activity" >
+    <id column="AC_ID" property="acId" jdbcType="INTEGER" />
+    <result column="AC_CRE_ID" property="acCreId" jdbcType="VARCHAR" />
+    <result column="AC_CRE_DATE" property="acCreDate" jdbcType="TIMESTAMP" />
+    <result column="AC_DUE_DATE" property="acDueDate" jdbcType="TIMESTAMP" />
+    <result column="AC_TITLE" property="acTitle" jdbcType="VARCHAR" />
+    <result column="AC_DESC" property="acDesc" jdbcType="VARCHAR" />
+    <result column="AC_DOC_ID" property="acDocId" jdbcType="VARCHAR" />
+    <result column="AC_DOC1_NAME" property="acDoc1Name" jdbcType="VARCHAR" />
+    <result column="AC_DOC2_NAME" property="acDoc2Name" jdbcType="VARCHAR" />
+    <result column="AC_DOC3_NAME" property="acDoc3Name" jdbcType="VARCHAR" />
+    <result column="AC_SIG_NUM" property="acSigNum" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    AC_ID, AC_CRE_ID, AC_CRE_DATE, AC_DUE_DATE, AC_TITLE, AC_DESC, AC_DOC_ID, AC_DOC1_NAME, 
+    AC_DOC2_NAME, AC_DOC3_NAME, AC_SIG_NUM
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="po.ActivityExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from activity
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from activity
+    where AC_ID = #{acId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from activity
+    where AC_ID = #{acId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="po.ActivityExample" >
+    delete from activity
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="po.Activity" >
+    insert into activity (AC_ID, AC_CRE_ID, AC_CRE_DATE, 
+      AC_DUE_DATE, AC_TITLE, AC_DESC, 
+      AC_DOC_ID, AC_DOC1_NAME, AC_DOC2_NAME, 
+      AC_DOC3_NAME, AC_SIG_NUM)
+    values (#{acId,jdbcType=INTEGER}, #{acCreId,jdbcType=VARCHAR}, #{acCreDate,jdbcType=TIMESTAMP}, 
+      #{acDueDate,jdbcType=TIMESTAMP}, #{acTitle,jdbcType=VARCHAR}, #{acDesc,jdbcType=VARCHAR}, 
+      #{acDocId,jdbcType=VARCHAR}, #{acDoc1Name,jdbcType=VARCHAR}, #{acDoc2Name,jdbcType=VARCHAR}, 
+      #{acDoc3Name,jdbcType=VARCHAR}, #{acSigNum,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="po.Activity" >
+    insert into activity
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="acId != null" >
+        AC_ID,
+      </if>
+      <if test="acCreId != null" >
+        AC_CRE_ID,
+      </if>
+      <if test="acCreDate != null" >
+        AC_CRE_DATE,
+      </if>
+      <if test="acDueDate != null" >
+        AC_DUE_DATE,
+      </if>
+      <if test="acTitle != null" >
+        AC_TITLE,
+      </if>
+      <if test="acDesc != null" >
+        AC_DESC,
+      </if>
+      <if test="acDocId != null" >
+        AC_DOC_ID,
+      </if>
+      <if test="acDoc1Name != null" >
+        AC_DOC1_NAME,
+      </if>
+      <if test="acDoc2Name != null" >
+        AC_DOC2_NAME,
+      </if>
+      <if test="acDoc3Name != null" >
+        AC_DOC3_NAME,
+      </if>
+      <if test="acSigNum != null" >
+        AC_SIG_NUM,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="acId != null" >
+        #{acId,jdbcType=INTEGER},
+      </if>
+      <if test="acCreId != null" >
+        #{acCreId,jdbcType=VARCHAR},
+      </if>
+      <if test="acCreDate != null" >
+        #{acCreDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="acDueDate != null" >
+        #{acDueDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="acTitle != null" >
+        #{acTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="acDesc != null" >
+        #{acDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="acDocId != null" >
+        #{acDocId,jdbcType=VARCHAR},
+      </if>
+      <if test="acDoc1Name != null" >
+        #{acDoc1Name,jdbcType=VARCHAR},
+      </if>
+      <if test="acDoc2Name != null" >
+        #{acDoc2Name,jdbcType=VARCHAR},
+      </if>
+      <if test="acDoc3Name != null" >
+        #{acDoc3Name,jdbcType=VARCHAR},
+      </if>
+      <if test="acSigNum != null" >
+        #{acSigNum,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="po.ActivityExample" resultType="java.lang.Integer" >
+    select count(*) from activity
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update activity
+    <set >
+      <if test="record.acId != null" >
+        AC_ID = #{record.acId,jdbcType=INTEGER},
+      </if>
+      <if test="record.acCreId != null" >
+        AC_CRE_ID = #{record.acCreId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.acCreDate != null" >
+        AC_CRE_DATE = #{record.acCreDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.acDueDate != null" >
+        AC_DUE_DATE = #{record.acDueDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.acTitle != null" >
+        AC_TITLE = #{record.acTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.acDesc != null" >
+        AC_DESC = #{record.acDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.acDocId != null" >
+        AC_DOC_ID = #{record.acDocId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.acDoc1Name != null" >
+        AC_DOC1_NAME = #{record.acDoc1Name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.acDoc2Name != null" >
+        AC_DOC2_NAME = #{record.acDoc2Name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.acDoc3Name != null" >
+        AC_DOC3_NAME = #{record.acDoc3Name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.acSigNum != null" >
+        AC_SIG_NUM = #{record.acSigNum,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update activity
+    set AC_ID = #{record.acId,jdbcType=INTEGER},
+      AC_CRE_ID = #{record.acCreId,jdbcType=VARCHAR},
+      AC_CRE_DATE = #{record.acCreDate,jdbcType=TIMESTAMP},
+      AC_DUE_DATE = #{record.acDueDate,jdbcType=TIMESTAMP},
+      AC_TITLE = #{record.acTitle,jdbcType=VARCHAR},
+      AC_DESC = #{record.acDesc,jdbcType=VARCHAR},
+      AC_DOC_ID = #{record.acDocId,jdbcType=VARCHAR},
+      AC_DOC1_NAME = #{record.acDoc1Name,jdbcType=VARCHAR},
+      AC_DOC2_NAME = #{record.acDoc2Name,jdbcType=VARCHAR},
+      AC_DOC3_NAME = #{record.acDoc3Name,jdbcType=VARCHAR},
+      AC_SIG_NUM = #{record.acSigNum,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="po.Activity" >
+    update activity
+    <set >
+      <if test="acCreId != null" >
+        AC_CRE_ID = #{acCreId,jdbcType=VARCHAR},
+      </if>
+      <if test="acCreDate != null" >
+        AC_CRE_DATE = #{acCreDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="acDueDate != null" >
+        AC_DUE_DATE = #{acDueDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="acTitle != null" >
+        AC_TITLE = #{acTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="acDesc != null" >
+        AC_DESC = #{acDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="acDocId != null" >
+        AC_DOC_ID = #{acDocId,jdbcType=VARCHAR},
+      </if>
+      <if test="acDoc1Name != null" >
+        AC_DOC1_NAME = #{acDoc1Name,jdbcType=VARCHAR},
+      </if>
+      <if test="acDoc2Name != null" >
+        AC_DOC2_NAME = #{acDoc2Name,jdbcType=VARCHAR},
+      </if>
+      <if test="acDoc3Name != null" >
+        AC_DOC3_NAME = #{acDoc3Name,jdbcType=VARCHAR},
+      </if>
+      <if test="acSigNum != null" >
+        AC_SIG_NUM = #{acSigNum,jdbcType=INTEGER},
+      </if>
+    </set>
+    where AC_ID = #{acId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="po.Activity" >
+    update activity
+    set AC_CRE_ID = #{acCreId,jdbcType=VARCHAR},
+      AC_CRE_DATE = #{acCreDate,jdbcType=TIMESTAMP},
+      AC_DUE_DATE = #{acDueDate,jdbcType=TIMESTAMP},
+      AC_TITLE = #{acTitle,jdbcType=VARCHAR},
+      AC_DESC = #{acDesc,jdbcType=VARCHAR},
+      AC_DOC_ID = #{acDocId,jdbcType=VARCHAR},
+      AC_DOC1_NAME = #{acDoc1Name,jdbcType=VARCHAR},
+      AC_DOC2_NAME = #{acDoc2Name,jdbcType=VARCHAR},
+      AC_DOC3_NAME = #{acDoc3Name,jdbcType=VARCHAR},
+      AC_SIG_NUM = #{acSigNum,jdbcType=INTEGER}
+    where AC_ID = #{acId,jdbcType=INTEGER}
+  </update>
+	<update id ="updateActivityNum" parameterType="int">
+		UPDATE activity
+		<set>
+			<if test="_parameter>=0">
+				AC_SIG_NUM=AC_SIG_NUM+1
+			</if>
+		</set>
+			WHERE AC_ID = #{_parameter}
+	</update>
+</mapper>
